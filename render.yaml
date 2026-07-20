@@ -1,0 +1,22 @@
+# Exported from Render on 2026-07-20T11:48:19Z
+version: "1"
+projects:
+- name: Approval - System
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: approval-system
+      runtime: static
+      repo: https://github.com/you323634-debug/USDT-SEND-
+      envVars:
+      - key: "No"
+        sync: false
+      - key: Ho
+        sync: false
+      - key: Op
+        sync: false
+      buildCommand: echo "Static site - no build needed"
+      staticPublishPath: .
+      autoDeployTrigger: commit
+      rootDir: .
